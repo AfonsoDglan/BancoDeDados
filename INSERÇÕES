@@ -1,0 +1,127 @@
+--INICIO_TABELA
+INSERT INTO public."AEROPORTO"(
+	"Codigo_aeroporto", "Nome", "Cidade", "Estado")
+	VALUES ('111', 'Congonhas', 'São Paulo','SP');
+	
+INSERT INTO public."AEROPORTO"(
+	"Codigo_aeroporto", "Nome", "Cidade", "Estado")
+	VALUES ('222', 'Galeão', 'Rio de janeiro','RJ');
+	
+INSERT INTO public."AEROPORTO"(
+	"Codigo_aeroporto", "Nome", "Cidade", "Estado")
+	VALUES ('333', 'Brigadeiro Lysias Rodrigures', 'Palmas','TO');
+
+--INICIO_TABELA
+INSERT INTO public."TIPO_AERONAVE"(
+	"Nome_tipo_aeronave","Qtd_max_assentos", "Companhia")
+	VALUES ('Boeing 777', '550', 'LATAM');
+	
+INSERT INTO public."TIPO_AERONAVE"(
+	"Nome_tipo_aeronave","Qtd_max_assentos", "Companhia")
+	VALUES ('PIPER PA-28', '4', 'GOL');
+	
+INSERT INTO public."TIPO_AERONAVE"(
+	"Nome_tipo_aeronave","Qtd_max_assentos", "Companhia")
+	VALUES ('AirBus A350-900', '440', 'Azul');
+	
+--INICIO_TABELA
+INSERT INTO public."AERONAVE"(
+	"Codigo_aeronave", "Numero_total_assentos", "Tipo_aeronave")
+	VALUES ('001', '550', 'Boeing 777');
+	
+INSERT INTO public."AERONAVE"(
+	"Codigo_aeronave", "Numero_total_assentos", "Tipo_aeronave")
+	VALUES('002', '4', 'PIPER PA-28');
+	
+INSERT INTO public."AERONAVE"(
+	"Codigo_aeronave", "Numero_total_assentos", "Tipo_aeronave")
+	Values('003', '440', 'AirBus A350-900');
+	
+--INICIO_TABELA
+INSERT INTO public."AERONAVE"(
+	"Codigo_aeronave", "Numero_total_assentos", "Tipo_aeronave")
+	VALUES ('001', '550', 'Boeing 777');
+	
+INSERT INTO public."AERONAVE"(
+	"Codigo_aeronave", "Numero_total_assentos", "Tipo_aeronave")
+	VALUES('002', '4', 'PIPER PA-28');
+	
+INSERT INTO public."AERONAVE"(
+	"Codigo_aeronave", "Numero_total_assentos", "Tipo_aeronave")
+	Values('003', '440', 'AirBus A350-900');
+--INICIO_TABELA
+INSERT INTO public."VOO"(
+	"Numero_voo", "Companhia_aerea", "Dias_da_semana")
+	VALUES ('1010', 'LATAM', '08/06/2012');
+	
+INSERT INTO public."VOO"(
+	"Numero_voo", "Companhia_aerea", "Dias_da_semana")
+	VALUES ('2020', 'Azul', '11/11/2011');
+
+INSERT INTO public."VOO"(
+	"Numero_voo", "Companhia_aerea", "Dias_da_semana")
+	VALUES ('3030', 'GOL', '27/12/2021');
+--INICIO_TABELA
+INSERT INTO public."TRECHO_VOO"(
+	"Numero_voo", "Numero_trecho", "Codigo_aeroporto_partida", "Horario_partida_previsto", "Codigo_aeroporto_chegada", "Horario_chegada_previsto")
+	VALUES ('1010', '9876', '222', '12:00', '111','13:00');
+
+INSERT INTO public."TRECHO_VOO"(
+	"Numero_voo", "Numero_trecho", "Codigo_aeroporto_partida", "Horario_partida_previsto", "Codigo_aeroporto_chegada", "Horario_chegada_previsto")
+	VALUES ('2020', '500', '333', '16:00', '111','17:40');
+
+INSERT INTO public."TRECHO_VOO"(
+	"Numero_voo", "Numero_trecho", "Codigo_aeroporto_partida", "Horario_partida_previsto", "Codigo_aeroporto_chegada", "Horario_chegada_previsto")
+	VALUES ('3030', '6543', '222', '18:00', '333','19:00');
+--INICIO_TABELA
+INSERT INTO public."INSTANCIA_TRECHO"(
+	"Numero_voo", "Numero_trecho", "Data", "Numero_assentos_disponiveis", "Codigo_aeronave", "Codigo_aeroporto_partida", "Horario_partida", "Codigo_aeroporto_chegada", "Horario_chegada")
+	VALUES ('1010', '9876', '08/06/2012','300', '001', '222', '12:00', '111', '14:00');
+	
+INSERT INTO public."INSTANCIA_TRECHO"(
+	"Numero_voo", "Numero_trecho", "Data", "Numero_assentos_disponiveis", "Codigo_aeronave", "Codigo_aeroporto_partida", "Horario_partida", "Codigo_aeroporto_chegada", "Horario_chegada")
+	VALUES ('2020', '500', '11/11/2011','2', '003', '333', '16:00', '111', '18:00');
+	
+INSERT INTO public."INSTANCIA_TRECHO"(
+	"Numero_voo", "Numero_trecho", "Data", "Numero_assentos_disponiveis", "Codigo_aeronave", "Codigo_aeroporto_partida", "Horario_partida", "Codigo_aeroporto_chegada", "Horario_chegada")
+	VALUES ('3030', '6543', '27/12/2021','1', '002', '222', '18:40', '333', '20:40');
+--INICIO_TABELA
+INSERT INTO public."TARIFA"(
+	"Numero_voo", "Codigo_tarifa", "Quantidade", "Restricoes")
+	VALUES ('1010', '8888', '250', 'Sem alteração de rota.');
+
+INSERT INTO public."TARIFA"(
+	"Numero_voo", "Codigo_tarifa", "Quantidade", "Restricoes")
+	VALUES ('2020', '4444', '90', 'Sem endosso.');
+	
+INSERT INTO public."TARIFA"(
+	"Numero_voo", "Codigo_tarifa", "Quantidade", "Restricoes")
+	VALUES ('3030', '404', '1', 'Taxi aéreo');
+--INICIO_TABELA
+INSERT INTO public."ASSENTO"(
+	"Data", "Numero_assento", "Nome_cliente", "Telefone_cliente")
+	VALUES ('08/06/2012', '33', 'Cristano Ronaldo da Silva', '+5563984010101');
+	
+INSERT INTO public."ASSENTO"(
+	"Data", "Numero_assento", "Nome_cliente", "Telefone_cliente")
+	VALUES ('08/06/2012', '42', 'Xuxa Meneguel', '+5563984020202');
+	
+INSERT INTO public."ASSENTO"(
+	"Data", "Numero_assento", "Nome_cliente", "Telefone_cliente")
+	VALUES ('08/06/2012', '15', 'Agostinho Carrara', '+5563984030303');
+	
+INSERT INTO public."ASSENTO"(
+	"Data", "Numero_assento", "Nome_cliente", "Telefone_cliente")
+	VALUES ('08/06/2012', '43', 'Renato Aragão', '+55639840404');
+	
+INSERT INTO public."ASSENTO"(
+	"Data", "Numero_assento", "Nome_cliente", "Telefone_cliente")
+	VALUES ('11/11/2011', '03', 'Pamela Anderson', '+5563984050505');
+	
+INSERT INTO public."ASSENTO"(
+	"Data", "Numero_assento", "Nome_cliente", "Telefone_cliente")
+	VALUES ('11/11/2011', '04', 'Whindersson Nunes', '+5563984050505');
+	
+INSERT INTO public."ASSENTO"(
+	"Data", "Numero_assento", "Nome_cliente", "Telefone_cliente")
+	VALUES ('27/12/2021', '100', 'Afonso Barros', '+5563984060606');
