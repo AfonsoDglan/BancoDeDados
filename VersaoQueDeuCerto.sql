@@ -1,4 +1,4 @@
-
+--Aluno: Bruno Ferreira da Silva
 BEGIN;
 
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS public."INSTANCIA_TRECHO"
 (
     "Numero_voo" int NOT NULL CONSTRAINT unico4 UNIQUE,
     "Numero_trecho" int NOT NULL CONSTRAINT unico5 UNIQUE,
-    "Data_" varchar(10) NOT NULL CONSTRAINT unico6 UNIQUE,
+    "Data" varchar(10) NOT NULL CONSTRAINT INSTANCIA_TRECHO_PK PRIMARY KEY,
     "Numero_assentos_disponiveis" int,
     "Codigo_aeronave" int,
     "Codigo_aeroporto_partida" int,
@@ -66,12 +66,10 @@ CREATE TABLE IF NOT EXISTS public."AERONAVE"
     PRIMARY KEY ("Codigo_aeronave")
 );
 
-CREATE TABLE IF NOT EXISTS public."RESERVA_ASSENTO"
+CREATE TABLE IF NOT EXISTS public."ASSENTO"
 (
-    "Numero_voo" int NOT NULL CONSTRAINT unico7 UNIQUE,
-    "Numero_trecho" int NOT NULL CONSTRAINT unico8 UNIQUE,
-    "Data_" varchar(10) NOT NULL CONSTRAINT unico9 UNIQUE,
-    "Numero_assento" int,
+    "Data" varchar(10) NOT NULL,
+    "Numero_assento" int CONSTRAINT ASSENTO_PK PRIMARY KEY,
     "Nome_cliente" varchar(100),
     "Telefone_cliente" varchar(15)
 );
@@ -162,33 +160,9 @@ ALTER TABLE IF EXISTS public."AERONAVE"
     NOT VALID;
 
 
-ALTER TABLE IF EXISTS public."RESERVA_ASSENTO"
-    ADD FOREIGN KEY ("Numero_voo")
-    REFERENCES public."INSTANCIA_TRECHO" ("Numero_voo") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
-ALTER TABLE IF EXISTS public."RESERVA_ASSENTO"
-    ADD FOREIGN KEY ("Numero_trecho")
-    REFERENCES public."INSTANCIA_TRECHO" ("Numero_trecho") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
-ALTER TABLE IF EXISTS public."RESERVA_ASSENTO"
-    ADD FOREIGN KEY ("Data_")
-    REFERENCES public."INSTANCIA_TRECHO" ("Data_") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
-ALTER TABLE IF EXISTS public."RESERVA_ASSENTO"
-    ADD FOREIGN KEY ("Data_")
-    REFERENCES public."INSTANCIA_TRECHO" ("Data_") MATCH SIMPLE
+ALTER TABLE IF EXISTS public."ASSENTO"
+    ADD FOREIGN KEY ("Data")
+    REFERENCES public."INSTANCIA_TRECHO" ("Data") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
